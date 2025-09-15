@@ -19,7 +19,7 @@ function App() {
     
     try {
       // Appel à votre API backend
-      const response = await fetch('http://localhost:8000/api/trips/', {
+      const response = await fetch('https://drivers-daily-log.onrender.com/api/trips/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
