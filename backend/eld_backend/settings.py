@@ -25,10 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-iee1!(tt6nx)b!fexvtcsc%0ya-*3_@mv5r3%dp9qw7j%^ahpi'
+# SECRET_KEY = 'django-insecure-iee1!(tt6nx)b!fexvtcsc%0ya-*3_@mv5r3%dp9qw7j%^ahpi'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = []
 
@@ -59,8 +60,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
+    "https://drivers-daily-log-nine.vercel.app"
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -132,6 +132,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
@@ -185,5 +187,3 @@ LOGGING = {
         },
     },
 }
-
-# eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6Ijk1ZmY2ODgwNDU1MTQzZWI4ODZiMDNjNDNjNDdmZTcxIiwiaCI6Im11cm11cjY0In0=
