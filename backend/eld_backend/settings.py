@@ -31,7 +31,9 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
 
 # Application definition
@@ -62,7 +64,10 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://drivers-daily-log-nine.vercel.app"
+    "https://drivers-daily-log-nine.vercel.app",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173"
+
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
